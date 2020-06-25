@@ -20,7 +20,7 @@ Code of JL-DCF: Joint Learning and Densely-Cooperative Fusion Framework for RGB-
 * run main.py
 ## learning curve
 The training logs is saveing in the 'log' folder, if you want to see the learning curve, you can get it by using:<br>
-`<tensorboard --logdir your-log-path>`
+` tensorboard --logdir your-log-path`
 # Pre-trained model
 [resnet101](https://download.pytorch.org/models/resnet101-5d3b4d8f.pth)<br>
 [JL-DCF-pytorch](https://baidu.com)<br>
