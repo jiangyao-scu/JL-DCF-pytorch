@@ -5,10 +5,23 @@ Code of JL-DCF: Joint Learning and Densely-Cooperative Fusion Framework for RGB-
 * python 3.6 <br>
 * pytorch 1.5.0 <br>
 * torchvision 0.6.1 <br>
+* cuda 10.0
 # Usage
-
+## Train 
+* Downloading the pre-trained backbone and put in it the pretrained file folder
+* downloading the train set and modify the 'train_root' and 'train_list' in the main.py
+* set 'mode' to 'train'
+* run main.py
+## Test 
+* Downloading the pre-trained JL-DCF model and modify the 'model' in the main.py
+* Modify the 'test_folder' in the main.py to your testing results save floader
+* Modify the 'sal_mode' to select testing dataset
+* set 'mode' to 'test'
 # Pre-trained model
-
+[resnet101](https://download.pytorch.org/models/resnet101-5d3b4d8f.pth)
+[JL-DCF-pytorch](https://baidu.com)
+# pre-computed saliency maps
+[pre-computed saliency maps](https://baidu.com)
 # Performance
 
 
