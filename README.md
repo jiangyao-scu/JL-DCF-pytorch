@@ -27,7 +27,7 @@ The training logs is saveing in the 'log' folder, if you want to see the learnin
 # pre-computed saliency maps
 [pre-computed saliency maps](https://baidu.com)
 # Performance
-<br>
+
 | Dataset |      | Caffe | resnet50 | pre-computed saliency map | resnet101 |
 | ------- | ---- | ----- | -------- | ------------------------- | --------- |
 | NJU2K   | S    | 0.903 | 0.906    | 0.902                     | 0.906     |
