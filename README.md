@@ -1,6 +1,6 @@
 # JL-DCF-pytorch
 
-Code of JL-DCF: Joint Learning and Densely-Cooperative Fusion Framework for RGB-D Salient Object Detection(CVPR2020))
+Code of JL-DCF: Joint Learning and Densely-Cooperative Fusion Framework for RGB-D Salient Object Detection(CVPR2020)
 # Requirements
 python 3.6 pytorch 1.5.0
 # Usage
