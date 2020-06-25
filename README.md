@@ -17,6 +17,10 @@ Code of JL-DCF: Joint Learning and Densely-Cooperative Fusion Framework for RGB-
 * Modify the 'test_folder' in the main.py to your testing results save floader
 * Modify the 'sal_mode' to select testing dataset
 * set 'mode' to 'test'
+* run main.py
+## learning curve
+The training logs is saveing in the 'log' folder, if you want to see the learning curve, you can get it by using:
+'<tensorboard --logdir your-log-path>'
 # Pre-trained model
 [resnet101](https://download.pytorch.org/models/resnet101-5d3b4d8f.pth)
 [JL-DCF-pytorch](https://baidu.com)
