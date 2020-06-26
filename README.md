@@ -23,41 +23,41 @@ The training logs saves in the 'log' folder, if you want to see the learning cur
 ` tensorboard --logdir your-log-path`
 # Pre-trained model
 [resnet101](https://download.pytorch.org/models/resnet101-5d3b4d8f.pth)<br>
-[vgg_conv1](https://pan.baidu.com/s/1CJyNALzPIAiHrDSMcRO2yA), password  rllb<br>
-[JL-DCF-pytorch](https://pan.baidu.com/s/1EZQZBKzSbZjNdJluKsRd9g), password   nqrh<br>
+[vgg_conv1](https://pan.baidu.com/s/1CJyNALzPIAiHrDSMcRO2yA), password:  rllb<br>
+[JL-DCF-pytorch](https://pan.baidu.com/s/1Vu8uUpo3pVd-sXniVlXEAA), password:  b5r6<br>
 # pre-computed saliency maps
-[pre-computed saliency maps](https://pan.baidu.com/s/1gaIucFyCWlE4f1qhPKzzTw), password  5hl9<br>
+[pre-computed saliency maps](https://pan.baidu.com/s/1gaIucFyCWlE4f1qhPKzzTw), password:  5hl9<br>
 # Dataset
-* [training dataset](https://pan.baidu.com/s/1vrVcRFTMRO5v-A6Q2Y3-Nw), password  i4mi<br>
-* [testing datadet](https://pan.baidu.com/s/13P-f3WbA76NVtRePcFbVFw), password   1ju8<br>
+* [training dataset](https://pan.baidu.com/s/1vrVcRFTMRO5v-A6Q2Y3-Nw), password:  i4mi<br>
+* [testing datadet](https://pan.baidu.com/s/13P-f3WbA76NVtRePcFbVFw), password:   1ju8<br>
 # Performance
 
-| Dataset |      | Caffe | resnet50 | pre-computed saliency map | resnet101 |
-| ------- | ---- | ----- | -------- | ------------------------- | --------- |
-| NJU2K   | S    | 0.903 | 0.906    | 0.902                     | 0.906     |
-|         | F    | 0.903 | 0.907    | 0.904                     | 0.906     |
-|         | E    | 0.944 | 0.946    | 0.944                     | 0.943     |
-|         | M    | 0.043 | 0.040    | 0.041                     | 0.041     |
-| NLPR    | S    | 0.925 | 0.931    | 0.925                     | 0.928     |
-|         | F    | 0.916 | 0.921    | 0.918                     | 0.915     |
-|         | E    | 0.962 | 0.967    | 0.963                     | 0.964     |
-|         | M    | 0.022 | 0.021    | 0.022                     | 0.023     |
-| STERE   | S    | 0.905 | 0.907    | 0.903                     | 0.901     |
-|         | F    | 0.901 | 0.905    | 0.904                     | 0.895     |
-|         | E    | 0.946 | 0.948    | 0.947                     | 0.943     |
-|         | M    | 0.042 | 0.038    | 0.040                     | 0.042     |
-| RGBD135 | S    | 0.929 | 0.928    | 0.931                     | 0.937     |
-|         | F    | 0.919 | 0.921    | 0.923                     | 0.934     |
-|         | E    | 0.968 | 0.967    | 0.968                     | 0.975     |
-|         | M    | 0.022 | 0.021    | 0.021                     | 0.020     |
-| LFSD    | S    | 0.862 | 0.853    | 0.862                     | 0.862     |
-|         | F    | 0.866 | 0.860    | 0.867                     | 0.868     |
-|         | E    | 0.901 | 0.894    | 0.902                     | 0.902     |
-|         | M    | 0.071 | 0.076    | 0.070                     | 0.072     |
-| SIP     | S    | 0.879 | 0.888    | 0.880                     | 0.878     |
-|         | F    | 0.885 | 0.892    | 0.889                     | 0.887     |
-|         | E    | 0.923 | 0.931    | 0.925                     | 0.926     |
-|         | M    | 0.051 | 0.046    | 0.049                     | 0.051     |
+| dataset |      | Caffe | resnet50 | 发布的saliency map | resnet101 |
+| ------- | ---- | ----- | -------- | ------------------ | --------- |
+| NJU2K   | S    | 0.903 | 0.906    | 0.902              | 0.918     |
+|         | F    | 0.903 | 0.907    | 0.904              | 0.918     |
+|         | E    | 0.944 | 0.946    | 0.944              | 0.952     |
+|         | M    | 0.043 | 0.040    | 0.041              | 0.037     |
+| NLPR    | S    | 0.925 | 0.931    | 0.925              | 0.934     |
+|         | F    | 0.916 | 0.921    | 0.918              | 0.923     |
+|         | E    | 0.962 | 0.967    | 0.963              | 0.967     |
+|         | M    | 0.022 | 0.021    | 0.022              | 0.022     |
+| STERE   | S    | 0.905 | 0.907    | 0.903              | 0.907     |
+|         | F    | 0.901 | 0.905    | 0.904              | 0.901     |
+|         | E    | 0.946 | 0.948    | 0.947              | 0.944     |
+|         | M    | 0.042 | 0.038    | 0.040              | 0.043     |
+| RGBD135 | S    | 0.929 | 0.928    | 0.931              | 0.093     |
+|         | F    | 0.919 | 0.921    | 0.923              | 0.919     |
+|         | E    | 0.968 | 0.967    | 0.968              | 0.967     |
+|         | M    | 0.022 | 0.021    | 0.021              | 0.022     |
+| LFSD    | S    | 0.862 | 0.853    | 0.862              | 0.870     |
+|         | F    | 0.866 | 0.860    | 0.867              | 0.868     |
+|         | E    | 0.901 | 0.894    | 0.902              | 0.902     |
+|         | M    | 0.071 | 0.076    | 0.070              | 0.072     |
+| SIP     | S    | 0.879 | 0.888    | 0.880              | 0.884     |
+|         | F    | 0.885 | 0.892    | 0.889              | 0.892     |
+|         | E    | 0.923 | 0.931    | 0.925              |           |
+|         | M    | 0.051 | 0.046    | 0.049              | 0.049     |
 
 # Citation
 Please cite our paper if you find the work useful:<br>
