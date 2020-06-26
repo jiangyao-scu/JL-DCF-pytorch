@@ -1,13 +1,11 @@
 import torch
 from torch import nn
-from torch.nn import init
 import torch.nn.functional as F
 import math
 from torch.autograd import Variable
 import numpy as np
 
 from .resnet import resnet101_locate
-#from .vgg import vgg16_locate
 
 k=64
 
@@ -88,26 +86,12 @@ class JL_DCF(nn.Module):
         for i in range(len(x_cm)-2):
             for j in range(len(x_fa)):
                 x_fa_temp[j] = self.upsampling[i][i-j](x_fa[j])
-            # for a in x_fa_temp:
-            #     print(a.shape)
             x_fa.append(self.FA[3-i](x_cm[i+2], x_fa_temp))
             x_fa_temp.append(x_fa[-1])
 
         s_final = self.score_DCF(x_fa[-1])
         return s_final, s_coarse
 
-# class MODE(nn.Module):
-#     def __init__(self, jl_dcf):
-#         super(MODE, self).__init__()
-#         self.jl_dcf = jl_dcf
-#         self.conv1 = nn.Conv2d(k, 1, 1, 1)
-#         self.conv2 = nn.Conv2d(k, 1, 1, 1)
-#         self.conv3 = nn.Conv2d(k, 1, 1, 1)
-#         self.conv4 = nn.Conv2d(k, 1, 1, 1)
-#
-#     def forward(self, x):
-#         s_final, s_coarse  = self.jl_dcf(x)
-#         return s_final, s_coarse
 
 def build_model(base_model_cfg='resnet'):
     feature_aggregation_module = []
@@ -117,12 +101,12 @@ def build_model(base_model_cfg='resnet'):
     for i in range(0,4):
         upsampling.append([])
         for j in range(0,i+1):
-            upsampling[i].append(nn.ConvTranspose2d(64,64,kernel_size=2**(j+2),stride=2**(j+1),padding=2**(j)))
+            upsampling[i].append(nn.ConvTranspose2d(k,k,kernel_size=2**(j+2),stride=2**(j+1),padding=2**(j)))
     if base_model_cfg == 'vgg':
-        return JL_DCF(base_model_cfg, vgg16_locate(), CMLayer(), DCFlLayer(), ScoreLayer(k))
+        return JL_DCF(base_model_cfg, vgg16_locate(),  CMLayer(), feature_aggregation_module, ScoreLayer(k),ScoreLayer(k),upsampling)
     elif base_model_cfg == 'resnet':
         return JL_DCF(base_model_cfg, resnet101_locate(), CMLayer(), feature_aggregation_module, ScoreLayer(k),ScoreLayer(k),upsampling)
-        # return JL_DCF(base_model_cfg, resnet101_locate(), CMLayer(), DCFlLayer(), ScoreLayer(k))
+
 
 
 
