@@ -23,13 +23,13 @@ The training logs is saveing in the 'log' folder, if you want to see the learnin
 ` tensorboard --logdir your-log-path`
 # Pre-trained model
 [resnet101](https://download.pytorch.org/models/resnet101-5d3b4d8f.pth)<br>
-[vgg_conv1](https://pan.baidu.com/s/1CJyNALzPIAiHrDSMcRO2yA), 提取码 rllb<br>
-[JL-DCF-pytorch](https://pan.baidu.com/s/1EZQZBKzSbZjNdJluKsRd9g), 提取码  nqrh<br>
+[vgg_conv1](https://pan.baidu.com/s/1CJyNALzPIAiHrDSMcRO2yA),   rllb<br>
+[JL-DCF-pytorch](https://pan.baidu.com/s/1EZQZBKzSbZjNdJluKsRd9g),    nqrh<br>
 # pre-computed saliency maps
-[pre-computed saliency maps](https://pan.baidu.com/s/1gaIucFyCWlE4f1qhPKzzTw), 提取码 5hl9<br>
+[pre-computed saliency maps](https://pan.baidu.com/s/1gaIucFyCWlE4f1qhPKzzTw),   5hl9<br>
 # Dataset
-* [training dataset](https://pan.baidu.com/s/1vrVcRFTMRO5v-A6Q2Y3-Nw), 提取码 i4mi<br>
-* [testing datadet](https://pan.baidu.com/s/13P-f3WbA76NVtRePcFbVFw), 提取码  1ju8<br>
+* [training dataset](https://pan.baidu.com/s/1vrVcRFTMRO5v-A6Q2Y3-Nw),   i4mi<br>
+* [testing datadet](https://pan.baidu.com/s/13P-f3WbA76NVtRePcFbVFw),    1ju8<br>
 # Performance
 
 | Dataset |      | Caffe | resnet50 | pre-computed saliency map | resnet101 |
