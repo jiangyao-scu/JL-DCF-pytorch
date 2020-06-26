@@ -60,10 +60,10 @@ The training logs is saveing in the 'log' folder, if you want to see the learnin
 |         | M    | 0.051 | 0.046    | 0.049                     | 0.051     |
 
 # Citation
-@InProceedings{Wu_2019_CVPR,<br>
-author = {Wu, Zhe and Su, Li and Huang, Qingming},<br>
-title = {Cascaded Partial Decoder for Fast and Accurate Salient Object Detection},<br>
+Please cite our paper if you find the work useful:<br>
+@InProceedings{Fu_2020_CVPR,<br>
+author = {Keren Fu, Deng-Ping Fan, Ge-Peng Ji, Qijun Zhao},<br>
+title = {JL-DCF: Joint Learning and Densely-Cooperative Fusion Framework for RGB-D Salient Object Detection},<br>
 booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},<br>
-month = {June},<br>
-year = {2019}<br>
+year = {2020}<br>
 }
