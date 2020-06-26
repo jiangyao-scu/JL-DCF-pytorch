@@ -23,7 +23,8 @@ The training logs is saveing in the 'log' folder, if you want to see the learnin
 ` tensorboard --logdir your-log-path`
 # Pre-trained model
 [resnet101](https://download.pytorch.org/models/resnet101-5d3b4d8f.pth)<br>
-[JL-DCF-pytorch](https://baidu.com)<br>
+[vgg_conv1](https://pan.baidu.com/s/1CJyNALzPIAiHrDSMcRO2yA),提取码 rllb<br>
+[JL-DCF-pytorch](https://pan.baidu.com/s/1EZQZBKzSbZjNdJluKsRd9g),提取码nqrh<br>
 # pre-computed saliency maps
 [pre-computed saliency maps](https://baidu.com)
 # Performance
