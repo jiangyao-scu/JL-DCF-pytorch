@@ -8,18 +8,18 @@ Code of JL-DCF: Joint Learning and Densely-Cooperative Fusion Framework for RGB-
 * cuda 10.0
 # Usage
 ## Train 
-* Downloading the pre-trained backbone and put in it the pretrained file folder
+* Downloading the pre-trained backbone and put in it the 'pretrained' file folder
 * downloading the train set and modify the 'train_root' and 'train_list' in the main.py
 * set 'mode' to 'train'
 * run main.py
 ## Test 
 * Downloading the pre-trained JL-DCF model and modify the 'model' in the main.py
 * Modify the 'test_folder' in the main.py to your testing results save floader
-* Modify the 'sal_mode' to select testing dataset
+* Modify the 'sal_mode' to select testing dataset(NJU2K,NLPR,STERE,RGBD135,LFSD,SIP)
 * set 'mode' to 'test'
 * run main.py
 ## learning curve
-The training logs is saveing in the 'log' folder, if you want to see the learning curve, you can get it by using:<br>
+The training logs saves in the 'log' folder, if you want to see the learning curve, you can get it by using:<br>
 ` tensorboard --logdir your-log-path`
 # Pre-trained model
 [resnet101](https://download.pytorch.org/models/resnet101-5d3b4d8f.pth)<br>
