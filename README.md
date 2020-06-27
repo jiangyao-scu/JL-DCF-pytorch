@@ -7,7 +7,7 @@ Code of JL-DCF: Joint Learning and Densely-Cooperative Fusion Framework for RGB-
 * torchvision 0.6.1 <br>
 * cuda 10.0
 # Usage
-This is the pytorch implemention of JL-DCF. We have trained and tested it on windows (win10 + cuda 10 + python 3.6 + pytorch 1.5), it should also work on Linux but we didn't try. 
+This is the pytorch implementation of JL-DCF. We have trained and tested it on windows (win10 + cuda 10 + python 3.6 + pytorch 1.5), it should also work on Linux but we didn't try. 
 ## Train 
 * Downloading the pre-trained backbone(resnet101,vgg_conv1) and put in it the 'pretrained' file folder
 * downloading the train set and modify the 'train_root' and 'train_list' in the main.py
@@ -20,17 +20,17 @@ This is the pytorch implemention of JL-DCF. We have trained and tested it on win
 * Modify the 'sal_mode' to select testing dataset(NJU2K,NLPR,STERE,RGBD135,LFSD,SIP)
 * set 'mode' to 'test'
 * run main.py
-## learning curve
-The training logs saves in the 'log' folder, if you want to see the learning curve, you can get it by using:<br>
+## Learning curve
+The training logs saves in the 'log' folder. If you want to see the learning curve, you can get it by using:<br>
 ` tensorboard --logdir your-log-path`
 # Pre-trained model for training
 [resnet101](https://download.pytorch.org/models/resnet101-5d3b4d8f.pth)<br>
 [vgg_conv1](https://pan.baidu.com/s/1CJyNALzPIAiHrDSMcRO2yA), password:  rllb<br>
-# trained model for testing
-[JL-DCF-pytorch](https://pan.baidu.com/), password:  b5r6<br>
-# pre-computed saliency maps
+# Trained model for testing
+[JL-DCF-pytorch](https://pan.baidu.com/s/1ws2zC_g47xGjlHQbVdp-xw), password:  pii9<br>
+# Pre-computed saliency maps
 [pre-computed saliency maps come from author](https://pan.baidu.com/s/1gaIucFyCWlE4f1qhPKzzTw), password:  5hl9<br>
-[pre-computed saliency maps come from pytorch implementation of JL-DCF](), password:  XXXX<br>
+[pre-computed saliency maps come from pytorch implementation of JL-DCF](https://pan.baidu.com/s/1FmubauYT2N6BH2NWGxzpTQ), password:  b71v<br>
 # Dataset
 * [training dataset with Flip horizontally](https://pan.baidu.com/s/1vrVcRFTMRO5v-A6Q2Y3-Nw), password:  i4mi<br>
 * [testing datadet](https://pan.baidu.com/s/13P-f3WbA76NVtRePcFbVFw), password:   1ju8<br>
