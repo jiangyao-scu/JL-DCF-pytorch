@@ -35,7 +35,7 @@ The training logs saves in the 'log' folder, if you want to see the learning cur
 * [training dataset with Flip horizontally](https://pan.baidu.com/s/1vrVcRFTMRO5v-A6Q2Y3-Nw), password:  i4mi<br>
 * [testing datadet](https://pan.baidu.com/s/13P-f3WbA76NVtRePcFbVFw), password:   1ju8<br>
 # Performance
-This is the performance of JL-DCF on pytorch
+This is the performance of JL-DCF(pyotrch implemention).
 |      | JNJU2K | NLPR  | STERE | RGBD135 | LFSD  | SIP   |
 | ---- | ------ | ----- | ----- | ------- | ----- | ----- |
 | S    | 0.910  | 0.929 | 0.899 | 0.930   | 0.863 | 0.887 |
