@@ -7,23 +7,23 @@ import time
 
 def get_test_info(config):
     if config.sal_mode == 'NJU2K':
-        image_root = 'your testing dataset path/NJU2K_test/'
-        image_source = 'your testing dataset path/NJU2K_test/test.lst'
+        image_root = 'dataset/test/NJU2K_test/'
+        image_source = 'dataset/test/NJU2K_test/test.lst'
     elif config.sal_mode == 'STERE':
-        image_root = 'your testing dataset path/STERE/'
-        image_source = 'your testing dataset path/STERE/test.lst'
+        image_root = 'dataset/test/STERE/'
+        image_source = 'dataset/test/STERE/test.lst'
     elif config.sal_mode == 'RGBD135':
-        image_root = 'your testing dataset path/RGBD135/'
-        image_source = 'your testing dataset path/RGBD135/test.lst'
+        image_root = 'dataset/test/RGBD135/'
+        image_source = 'dataset/test/RGBD135/test.lst'
     elif config.sal_mode == 'LFSD':
-        image_root = 'your testing dataset path/LFSD/'
-        image_source = 'your testing dataset path/LFSD/test.lst'
+        image_root = 'dataset/test/LFSD/'
+        image_source = 'dataset/test/LFSD/test.lst'
     elif config.sal_mode == 'NLPR':
-        image_root = 'your testing dataset path/NLPR/'
-        image_source = 'your testing dataset path/NLPR/test.lst'
+        image_root = 'dataset/test/NLPR/'
+        image_source = 'dataset/test/NLPR/test.lst'
     elif config.sal_mode == 'SIP':
-        image_root = 'your testing dataset path/SIP/'
-        image_source = 'your testing dataset path/SIP/test.lst'
+        image_root = 'dataset/test/SIP/'
+        image_source = 'dataset/test/SIP/test.lst'
 
 
     config.test_root = image_root
