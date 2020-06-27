@@ -141,10 +141,10 @@ class Solver(object):
 
 
 
-            if (epoch) % self.config.epoch_save == 0 :
-                torch.save(self.net.state_dict(), '%s/epoch_%d.pth' % (self.config.save_folder, epoch))
+            if (epoch+1) % self.config.epoch_save == 0 :
+                torch.save(self.net.state_dict(), '%s/epoch_%d.pth' % (self.config.save_folder, epoch+1))
 
         # save model
-        torch.save(self.net.state_dict(), '%s/models/final.pth' % self.config.save_folder)
+        torch.save(self.net.state_dict(), '%s/final.pth' % self.config.save_folder)
 
 
