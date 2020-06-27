@@ -32,11 +32,11 @@ The training logs saves in the 'log' folder. If you want to see the learning cur
 [pre-computed saliency maps come from author](https://pan.baidu.com/s/1gaIucFyCWlE4f1qhPKzzTw), password:  5hl9<br>
 [pre-computed saliency maps come from pytorch implementation of JL-DCF](https://pan.baidu.com/s/1FmubauYT2N6BH2NWGxzpTQ), password:  b71v<br>
 # Dataset
-* [training dataset with Flip horizontally](https://pan.baidu.com/s/1vrVcRFTMRO5v-A6Q2Y3-Nw), password:  i4mi<br>
+* [training dataset with flip horizontally](https://pan.baidu.com/s/1vrVcRFTMRO5v-A6Q2Y3-Nw), password:  i4mi<br>
 * [testing datadet](https://pan.baidu.com/s/13P-f3WbA76NVtRePcFbVFw), password:   1ju8<br>
 # Performance
 This is the performance of JL-DCF(pyotrch implementation).
-|      | JNJU2K | NLPR  | STERE | RGBD135 | LFSD  | SIP   |
+|      |  NJU2K | NLPR  | STERE | RGBD135 | LFSD  | SIP   |
 | ---- | ------ | ----- | ----- | ------- | ----- | ----- |
 | S    | 0.910  | 0.929 | 0.899 | 0.930   | 0.863 | 0.887 |
 | F    | 0.911  | 0.916 | 0.894 | 0.918   | 0.868 | 0.894 |
