@@ -8,12 +8,13 @@ Code of JL-DCF: Joint Learning and Densely-Cooperative Fusion Framework for RGB-
 * cuda 10.0
 # Usage
 ## Train 
-* Downloading the pre-trained backbone and put in it the 'pretrained' file folder
+* Downloading the pre-trained backbone(resnet101,vgg_conv1) and put in it the 'pretrained' file folder
 * downloading the train set and modify the 'train_root' and 'train_list' in the main.py
 * set 'mode' to 'train'
 * run main.py
 ## Test 
-* Downloading the pre-trained JL-DCF model and modify the 'model' in the main.py
+* Downloading the testing dataset and put it in the 'dataset/test/' folder 
+* Downloading the pre-trained JL-DCF model and modify the 'model' to it saveing path in the main.py
 * Modify the 'test_folder' in the main.py to your testing results save floader
 * Modify the 'sal_mode' to select testing dataset(NJU2K,NLPR,STERE,RGBD135,LFSD,SIP)
 * set 'mode' to 'test'
