@@ -7,7 +7,7 @@ import numpy as np
 
 from .resnet import resnet101_locate
 
-k=64
+k = 64
 
 
 class CMLayer(nn.Module):
@@ -28,12 +28,14 @@ class FAModule(nn.Module):
     def __init__(self):
         super(FAModule, self).__init__()
         self.relu = nn.ReLU(inplace=True)
-        self.conv_branch1 = nn.Sequential(nn.Conv2d(k, int(k/4), 1), self.relu)
-        self.conv_branch2 = nn.Sequential(nn.Conv2d(k, int(k/2), 1), self.relu, nn.Conv2d(int(k/2), int(k/4), 3, 1, 1), self.relu)
-        self.conv_branch3 = nn.Sequential(nn.Conv2d(k, int(k/4), 1), self.relu, nn.Conv2d(int(k/4), int(k/4), 5, 1, 2), self.relu)
-        self.conv_branch4 = nn.Sequential(nn.MaxPool2d(3, 1, 1), nn.Conv2d(k, int(k/4), 1), self.relu)
+        self.conv_branch1 = nn.Sequential(nn.Conv2d(k, int(k / 4), 1), self.relu)
+        self.conv_branch2 = nn.Sequential(nn.Conv2d(k, int(k / 2), 1), self.relu,
+                                          nn.Conv2d(int(k / 2), int(k / 4), 3, 1, 1), self.relu)
+        self.conv_branch3 = nn.Sequential(nn.Conv2d(k, int(k / 4), 1), self.relu,
+                                          nn.Conv2d(int(k / 4), int(k / 4), 5, 1, 2), self.relu)
+        self.conv_branch4 = nn.Sequential(nn.MaxPool2d(3, 1, 1), nn.Conv2d(k, int(k / 4), 1), self.relu)
 
-    def forward(self, x_cm, x_fa ):
+    def forward(self, x_cm, x_fa):
         # element-wise addition
         x = x_cm
 
@@ -49,8 +51,6 @@ class FAModule(nn.Module):
         return x
 
 
-
-
 class ScoreLayer(nn.Module):
     def __init__(self, k):
         super(ScoreLayer, self).__init__()
@@ -64,12 +64,13 @@ class ScoreLayer(nn.Module):
 
 
 class JL_DCF(nn.Module):
-    def __init__(self, base_model_cfg, JLModule, cm_layers, feature_aggregation_module, JL_score_layers,DCF_score_layers,upsampling):
+    def __init__(self, base_model_cfg, JLModule, cm_layers, feature_aggregation_module, JL_score_layers,
+                 DCF_score_layers, upsampling):
         super(JL_DCF, self).__init__()
         self.base_model_cfg = base_model_cfg
         self.JLModule = JLModule
         self.FA = nn.ModuleList(feature_aggregation_module)
-        self.upsampling = nn.ModuleList(nn.ModuleList(upsampling[i]) for i in range(0,4))
+        self.upsampling = nn.ModuleList(nn.ModuleList(upsampling[i]) for i in range(0, 4))
         self.score_JL = JL_score_layers
         self.score_DCF = DCF_score_layers
         self.cm = cm_layers
@@ -83,10 +84,10 @@ class JL_DCF(nn.Module):
         x_fa_temp = []
         x_fa.append(self.FA[4](x_cm[1], x_cm[0]))
         x_fa_temp.append(x_fa[0])
-        for i in range(len(x_cm)-2):
+        for i in range(len(x_cm) - 2):
             for j in range(len(x_fa)):
-                x_fa_temp[j] = self.upsampling[i][i-j](x_fa[j])
-            x_fa.append(self.FA[3-i](x_cm[i+2], x_fa_temp))
+                x_fa_temp[j] = self.upsampling[i][i - j](x_fa[j])
+            x_fa.append(self.FA[3 - i](x_cm[i + 2], x_fa_temp))
             x_fa_temp.append(x_fa[-1])
 
         s_final = self.score_DCF(x_fa[-1])
@@ -98,15 +99,14 @@ def build_model(base_model_cfg='resnet'):
     for i in range(5):
         feature_aggregation_module.append(FAModule())
     upsampling = []
-    for i in range(0,4):
+    for i in range(0, 4):
         upsampling.append([])
-        for j in range(0,i+1):
-            upsampling[i].append(nn.ConvTranspose2d(k,k,kernel_size=2**(j+2),stride=2**(j+1),padding=2**(j)))
+        for j in range(0, i + 1):
+            upsampling[i].append(
+                nn.ConvTranspose2d(k, k, kernel_size=2 ** (j + 2), stride=2 ** (j + 1), padding=2 ** (j)))
     if base_model_cfg == 'vgg':
-        return JL_DCF(base_model_cfg, vgg16_locate(),  CMLayer(), feature_aggregation_module, ScoreLayer(k),ScoreLayer(k),upsampling)
+        return JL_DCF(base_model_cfg, vgg16_locate(), CMLayer(), feature_aggregation_module, ScoreLayer(k),
+                      ScoreLayer(k), upsampling)
     elif base_model_cfg == 'resnet':
-        return JL_DCF(base_model_cfg, resnet101_locate(), CMLayer(), feature_aggregation_module, ScoreLayer(k),ScoreLayer(k),upsampling)
-
-
-
-
+        return JL_DCF(base_model_cfg, resnet101_locate(), CMLayer(), feature_aggregation_module, ScoreLayer(k),
+                      ScoreLayer(k), upsampling)

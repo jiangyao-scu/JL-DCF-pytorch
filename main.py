@@ -24,10 +24,12 @@ def get_test_info(config):
     elif config.sal_mode == 'SIP':
         image_root = 'dataset/test/SIP/'
         image_source = 'dataset/test/SIP/test.lst'
-
+    else:
+        raise Exception('Invalid config.sal_mode')
 
     config.test_root = image_root
     config.test_list = image_source
+
 
 def main(config):
     if config.mode == 'train':
@@ -47,6 +49,7 @@ def main(config):
     else:
         raise IOError("illegal input!!!")
 
+
 if __name__ == '__main__':
     vgg_path = 'pretrained/vgg16_20M.pth'
     resnet_path = 'pretrained/resnet101-5d3b4d8f.pth'
@@ -55,17 +58,17 @@ if __name__ == '__main__':
 
     # Hyper-parameters
     parser.add_argument('--n_color', type=int, default=3)
-    parser.add_argument('--lr', type=float, default=1e-9) # Learning rate resnet:1e-9
-    parser.add_argument('--wd', type=float, default=0.0005) # Weight decay
+    parser.add_argument('--lr', type=float, default=1e-9)  # Learning rate resnet:1e-9
+    parser.add_argument('--wd', type=float, default=0.0005)  # Weight decay
     parser.add_argument('--cuda', type=bool, default=True)
 
     # Training settings
-    parser.add_argument('--arch', type=str, default='resnet') # resnet or vgg
-    parser.add_argument('--pretrained_model', type=str, default=resnet_path) #pretrained backbone model
+    parser.add_argument('--arch', type=str, default='resnet')  # resnet or vgg
+    parser.add_argument('--pretrained_model', type=str, default=resnet_path)  # pretrained backbone model
     parser.add_argument('--epoch', type=int, default=40)
-    parser.add_argument('--batch_size', type=int, default=1) # only support 1 now
+    parser.add_argument('--batch_size', type=int, default=1)  # only support 1 now
     parser.add_argument('--num_thread', type=int, default=1)
-    parser.add_argument('--load', type=str, default='')  #pretrained JL-DCF model
+    parser.add_argument('--load', type=str, default='')  # pretrained JL-DCF model
     parser.add_argument('--save_folder', type=str, default='checkpoints/')
     parser.add_argument('--epoch_save', type=int, default=1)
     parser.add_argument('--iter_size', type=int, default=10)
@@ -76,17 +79,17 @@ if __name__ == '__main__':
     parser.add_argument('--train_list', type=str, default='your training dataset path/RGBDcollection/train.lst')
 
     # Testing settings
-    parser.add_argument('--model', type=str, default='checkpoints/epoch_xx.pth') # Snapshot
-    parser.add_argument('--test_fold', type=str, default='your test results folder/') # Test results saving folder
-    parser.add_argument('--sal_mode', type=str, default='LFSD',choices=['NJU2K','NLPR','STERE','RGBD135','LFSD','SIP']) # Test image dataset
+    parser.add_argument('--model', type=str, default='checkpoints/epoch_xx.pth')  # Snapshot
+    parser.add_argument('--test_fold', type=str, default='your test results folder/')  # Test results saving folder
+    parser.add_argument('--sal_mode', type=str, default='LFSD',
+                        choices=['NJU2K', 'NLPR', 'STERE', 'RGBD135', 'LFSD', 'SIP'])  # Test image dataset
 
     # Misc
-    parser.add_argument('--mode', type=str, default='train',choices=['train', 'test'])
+    parser.add_argument('--mode', type=str, default='train', choices=['train', 'test'])
     config = parser.parse_args()
 
     if not os.path.exists(config.save_folder):
         os.mkdir(config.save_folder)
-
 
     get_test_info(config)
 

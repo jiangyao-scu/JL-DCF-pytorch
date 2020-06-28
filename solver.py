@@ -9,8 +9,7 @@ import cv2
 import time
 from torch.utils.tensorboard import SummaryWriter
 
-writer = SummaryWriter('log/run'+time.strftime("%d-%m"))
-
+writer = SummaryWriter('log/run' + time.strftime("%d-%m"))
 
 np.set_printoptions(threshold=np.inf)
 size = (320, 320)
@@ -36,9 +35,7 @@ class Solver(object):
             else:
                 self.net.load_state_dict(torch.load(self.config.load))  # load pretrained model
 
-
-
-        # print the network information and parameter numbers
+    # print the network information and parameter numbers
     def print_network(self, model, name):
         num_params = 0
         for p in model.parameters():
@@ -54,13 +51,12 @@ class Solver(object):
         if self.config.cuda:
             self.net = self.net.cuda()
 
-
-
         self.lr = self.config.lr
         self.wd = self.config.wd
 
-
-        self.optimizer = torch.optim.Adadelta(filter(lambda p:p.requires_grad,self.net.parameters()),lr=0.01, weight_decay=self.wd)
+        self.optimizer = torch.optim.Adadelta(filter(lambda p: p.requires_grad, self.net.parameters()),
+                                              lr=0.01,
+                                              weight_decay=self.wd)
 
         self.print_network(self.net, 'JL-DCF Structure')
 
@@ -68,8 +64,8 @@ class Solver(object):
         time_s = time.time()
         img_num = len(self.test_loader)
         for i, data_batch in enumerate(self.test_loader):
-            images, name, im_size, depth = data_batch['image'], data_batch['name'][0], np.asarray(data_batch['size']),\
-                                            data_batch['depth']
+            images, name, im_size, depth = data_batch['image'], data_batch['name'][0], np.asarray(data_batch['size']), \
+                                           data_batch['depth']
             with torch.no_grad():
                 if self.config.cuda:
                     device = torch.device('cuda:0')
@@ -77,16 +73,16 @@ class Solver(object):
                     depth = depth.to(device)
 
                 input = torch.cat((images, depth), dim=0)
-                preds,pred_coarse = self.net(input)
+                preds, pred_coarse = self.net(input)
                 preds = F.interpolate(preds, tuple(im_size), mode='bilinear', align_corners=True)
                 pred = np.squeeze(torch.sigmoid(preds)).cpu().data.numpy()
 
-                pred = (pred - pred.min())/(pred.max() - pred.min() + 1e-8)
+                pred = (pred - pred.min()) / (pred.max() - pred.min() + 1e-8)
                 multi_fuse = 255 * pred
                 filename = os.path.join(self.config.test_fold, name[:-4] + '_GT.png')
                 cv2.imwrite(filename, multi_fuse)
         time_e = time.time()
-        print('Speed: %f FPS' % (img_num/(time_e-time_s)))
+        print('Speed: %f FPS' % (img_num / (time_e - time_s)))
         print('Test Done!')
 
     # training phase
@@ -95,9 +91,10 @@ class Solver(object):
         aveGrad = 0
         self.optimizer.zero_grad()
         for epoch in range(self.config.epoch):
-            r_sal_loss= 0
+            r_sal_loss = 0
             for i, data_batch in enumerate(self.train_loader):
-                sal_image, sal_depth, sal_label = data_batch['sal_image'], data_batch['sal_depth'], data_batch['sal_label']
+                sal_image, sal_depth, sal_label = data_batch['sal_image'], data_batch['sal_depth'], data_batch[
+                    'sal_label']
                 if (sal_image.size(2) != sal_label.size(2)) or (sal_image.size(3) != sal_label.size(3)):
                     print('IMAGE ERROR, PASSING```')
                     continue
@@ -106,26 +103,20 @@ class Solver(object):
                     sal_image, sal_depth, sal_label = sal_image.to(device), sal_depth.to(device), sal_label.to(device)
 
                 sal_label_coarse = F.interpolate(sal_label, size_coarse, mode='bilinear', align_corners=True)
-                sal_label_coarse = torch.cat((sal_label_coarse,sal_label_coarse), dim=0)
+                sal_label_coarse = torch.cat((sal_label_coarse, sal_label_coarse), dim=0)
                 sal_input = torch.cat((sal_image, sal_depth), dim=0)
                 sal_final, sal_coarse = self.net(sal_input)
 
-
-
-
-
-
                 sal_loss_coarse = F.binary_cross_entropy_with_logits(sal_coarse, sal_label_coarse, reduction='sum')
                 sal_loss_final = F.binary_cross_entropy_with_logits(sal_final, sal_label, reduction='sum')
-
 
                 sal_loss_fuse = sal_loss_final + 256 * sal_loss_coarse
                 sal_loss = sal_loss_fuse / (self.iter_size * self.config.batch_size)  # 积累多少样本
                 r_sal_loss += sal_loss.data
                 sal_loss.backward()
-                aveGrad += 1
 
                 # accumulate gradients as done in DSS
+                aveGrad += 1
                 if aveGrad % self.iter_size == 0:
                     self.optimizer.step()
                     self.optimizer.zero_grad()
@@ -136,15 +127,11 @@ class Solver(object):
                         epoch, self.config.epoch, i + 1, iter_num, r_sal_loss / (self.show_every / self.iter_size)))
                     print('Learning rate: ' + str(self.lr))
                     writer.add_scalar('training loss', r_sal_loss / (self.show_every / self.iter_size),
-                                      (epoch) * len(self.train_loader.dataset) + i)
+                                      epoch * len(self.train_loader.dataset) + i)
                     r_sal_loss = 0
 
-
-
-            if (epoch+1) % self.config.epoch_save == 0 :
-                torch.save(self.net.state_dict(), '%s/epoch_%d.pth' % (self.config.save_folder, epoch+1))
+            if (epoch + 1) % self.config.epoch_save == 0:
+                torch.save(self.net.state_dict(), '%s/epoch_%d.pth' % (self.config.save_folder, epoch + 1))
 
         # save model
         torch.save(self.net.state_dict(), '%s/final.pth' % self.config.save_folder)
-
-
