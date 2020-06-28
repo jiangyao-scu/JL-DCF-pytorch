@@ -7,9 +7,10 @@ from torch.utils import data
 import numpy as np
 import random
 
-
 random.seed(10)
 normalization = True
+
+
 class ImageDataTrain(data.Dataset):
     def __init__(self, data_root, data_list):
         self.sal_root = data_root
@@ -31,7 +32,7 @@ class ImageDataTrain(data.Dataset):
         sal_label = load_sal_label(os.path.join(self.sal_root, gt_name))
 
         sal_image, sal_depth, sal_label = cv_random_crop(sal_image, sal_depth, sal_label)
-        sal_image = sal_image.transpose((2,0,1))
+        sal_image = sal_image.transpose((2, 0, 1))
         sal_depth = sal_depth.transpose((2, 0, 1))
         sal_label = sal_label.transpose((2, 0, 1))
 
@@ -60,7 +61,8 @@ class ImageDataTest(data.Dataset):
         depth = load_depth_test(os.path.join(self.data_root, self.image_list[item].split()[1]))
         image = torch.Tensor(image)
         depth = torch.Tensor(depth)
-        return {'image': image, 'name': self.image_list[item % self.image_num].split()[0].split('/')[1], 'size': im_size, 'depth': depth}
+        return {'image': image, 'name': self.image_list[item % self.image_num].split()[0].split('/')[1],
+                'size': im_size, 'depth': depth}
 
     def __len__(self):
         return self.image_num
@@ -71,10 +73,12 @@ def get_loader(config, mode='train', pin=True):
     if mode == 'train':
         shuffle = True
         dataset = ImageDataTrain(config.train_root, config.train_list)
-        data_loader = data.DataLoader(dataset=dataset, batch_size=config.batch_size, shuffle=shuffle, num_workers=config.num_thread, pin_memory=pin)
+        data_loader = data.DataLoader(dataset=dataset, batch_size=config.batch_size, shuffle=shuffle,
+                                      num_workers=config.num_thread, pin_memory=pin)
     else:
         dataset = ImageDataTest(config.test_root, config.test_list)
-        data_loader = data.DataLoader(dataset=dataset, batch_size=config.batch_size, shuffle=shuffle, num_workers=config.num_thread, pin_memory=pin)
+        data_loader = data.DataLoader(dataset=dataset, batch_size=config.batch_size, shuffle=shuffle,
+                                      num_workers=config.num_thread, pin_memory=pin)
     return data_loader
 
 
@@ -97,7 +101,7 @@ def load_depth(path):
         print('File {} not exists'.format(path))
     im = cv2.imread(path)
     in_ = np.array(im, dtype=np.float32)
-    in_ = cv2.resize(in_,(320,320))
+    in_ = cv2.resize(in_, (320, 320))
     if normalization == True:
         in_ = in_[:, :, ::-1]
         in_ = in_ / 255.0
@@ -105,18 +109,19 @@ def load_depth(path):
         in_ /= np.array((0.229, 0.224, 0.225))
     return in_
 
+
 def load_depth_test(path):
     if not os.path.exists(path):
         print('File {} not exists'.format(path))
     im = cv2.imread(path)
     in_ = np.array(im, dtype=np.float32)
-    in_ = cv2.resize(in_,(320,320))
+    in_ = cv2.resize(in_, (320, 320))
     if normalization == True:
         in_ = in_[:, :, ::-1]
         in_ = in_ / 255.0
         in_ -= np.array((0.485, 0.456, 0.406))
         in_ /= np.array((0.229, 0.224, 0.225))
-    in_ = in_.transpose((2,0,1))
+    in_ = in_.transpose((2, 0, 1))
     return in_
 
 
@@ -141,22 +146,21 @@ def load_sal_label(path):
         print('File {} not exists'.format(path))
     im = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
     label = np.array(im, dtype=np.float32)
-    label = cv2.resize(label,(320,320))
+    label = cv2.resize(label, (320, 320))
     label = label / 255.0
-    label = label[...,np.newaxis]
+    label = label[..., np.newaxis]
     return label
-
 
 
 def cv_random_crop(image, depth, label):
     top = random.randint(0, 20)
     left = random.randint(0, 20)
 
-    image = image[top: top + 300, left: left + 300,:]
-    depth = depth[top: top + 300, left: left + 300,:]
-    label = label[top: top + 300, left: left + 300,:]
-    image = cv2.resize(image,(320,320))
+    image = image[top: top + 300, left: left + 300, :]
+    depth = depth[top: top + 300, left: left + 300, :]
+    label = label[top: top + 300, left: left + 300, :]
+    image = cv2.resize(image, (320, 320))
     depth = cv2.resize(depth, (320, 320))
     label = cv2.resize(label, (320, 320))
     label = label[..., np.newaxis]
-    return image,depth,label
+    return image, depth, label
