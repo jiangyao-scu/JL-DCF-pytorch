@@ -1,14 +1,54 @@
 import torch
 from torch import nn
 import torch.nn.functional as F
-import math
-from torch.autograd import Variable
-import numpy as np
+# import math
+# from torch.autograd import Variable
+# import numpy as np
 
-from .resnet import resnet101_locate
+from .resnet import ResNet, Bottleneck
 
 k = 64
 
+class JLModule(nn.Module):
+    def __init__(self, backbone):
+        super(JLModule, self).__init__()
+        self.backbone = backbone
+        self.relu = nn.ReLU(inplace=True)
+        self.vgg_conv1 = nn.Sequential(nn.Conv2d(3, 64, kernel_size=3, stride=1, padding=1), nn.ReLU(inplace=True),
+                                       nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
+                                       nn.ReLU(inplace=True))
+        cp = []
+
+        cp.append(nn.Sequential(nn.Conv2d(64, 128, 3, 1, 1), self.relu, nn.Conv2d(128, 128, 3, 1, 1), self.relu,
+                                nn.Conv2d(128, k, 3, 1, 1), self.relu))
+        cp.append(nn.Sequential(nn.Conv2d(64, 128, 3, 1, 1), self.relu, nn.Conv2d(128, 128, 3, 1, 1), self.relu,
+                                nn.Conv2d(128, k, 3, 1, 1), self.relu))
+        cp.append(nn.Sequential(nn.Conv2d(256, 256, 5, 1, 2), self.relu, nn.Conv2d(256, 256, 5, 1, 2), self.relu,
+                                nn.Conv2d(256, k, 3, 1, 1), self.relu))
+        cp.append(nn.Sequential(nn.Conv2d(512, 256, 5, 1, 2), self.relu, nn.Conv2d(256, 256, 5, 1, 2), self.relu,
+                                nn.Conv2d(256, k, 3, 1, 1), self.relu))
+        cp.append(nn.Sequential(nn.Conv2d(1024, 512, 5, 1, 2), self.relu, nn.Conv2d(512, 512, 5, 1, 2), self.relu,
+                                nn.Conv2d(512, k, 3, 1, 1), self.relu))
+        cp.append(nn.Sequential(nn.Conv2d(2048, 512, 7, 1, 6, 2), self.relu, nn.Conv2d(512, 512, 7, 1, 6, 2),
+                                self.relu, nn.Conv2d(512, k, 3, 1, 1), self.relu))
+        self.CP = nn.ModuleList(cp)
+
+    def load_pretrained_model(self, model_path):
+        pretrained_dict = torch.load(model_path)
+        model_dict = self.backbone.state_dict()
+        pretrained_dict = {k: v for k, v in pretrained_dict.items() if k in model_dict}
+        model_dict.update(pretrained_dict)
+        self.backbone.load_state_dict(model_dict)
+        self.vgg_conv1.load_state_dict(torch.load('pretrained/vgg_conv1.pth'), strict=True)
+
+    def forward(self, x):
+        # put tensor from Resnet backbone to compress model
+        feature_extract = []
+        feature_extract.append(self.CP[0](self.vgg_conv1(x)))
+        x = self.backbone(x)
+        for i in range(5):
+            feature_extract.append(self.CP[i + 1](x[i]))
+        return feature_extract  # list of tensor that compress model output
 
 class CMLayer(nn.Module):
     def __init__(self):
@@ -104,9 +144,8 @@ def build_model(base_model_cfg='resnet'):
         for j in range(0, i + 1):
             upsampling[i].append(
                 nn.ConvTranspose2d(k, k, kernel_size=2 ** (j + 2), stride=2 ** (j + 1), padding=2 ** (j)))
-    if base_model_cfg == 'vgg':
-        return JL_DCF(base_model_cfg, vgg16_locate(), CMLayer(), feature_aggregation_module, ScoreLayer(k),
+    if base_model_cfg == 'resnet':
+        backbone = ResNet(Bottleneck, [3, 4, 23, 3])
+        return JL_DCF(base_model_cfg, JLModule(backbone), CMLayer(), feature_aggregation_module, ScoreLayer(k),
                       ScoreLayer(k), upsampling)
-    elif base_model_cfg == 'resnet':
-        return JL_DCF(base_model_cfg, resnet101_locate(), CMLayer(), feature_aggregation_module, ScoreLayer(k),
-                      ScoreLayer(k), upsampling)
+
