@@ -1,7 +1,5 @@
 import torch
-import random
-from torch.nn import utils, functional as F
-from torch.backends import cudnn
+from torch.nn import functional as F
 from networks.JL_DCF import build_model
 import numpy as np
 import os
@@ -11,8 +9,6 @@ from torch.utils.tensorboard import SummaryWriter
 
 writer = SummaryWriter('log/run' + time.strftime("%d-%m"))
 
-np.set_printoptions(threshold=np.inf)
-size = (320, 320)
 size_coarse = (20, 20)
 
 
@@ -23,7 +19,6 @@ class Solver(object):
         self.config = config
         self.iter_size = config.iter_size
         self.show_every = config.show_every
-        self.lr_decay_epoch = [100]
         self.build_model()
         self.net.eval()
         if config.mode == 'test':
@@ -54,9 +49,8 @@ class Solver(object):
         self.lr = self.config.lr
         self.wd = self.config.wd
 
-        self.optimizer = torch.optim.Adadelta(filter(lambda p: p.requires_grad, self.net.parameters()),
-                                              lr=0.01,
-                                              weight_decay=self.wd)
+        self.optimizer = torch.optim.SGD(self.net.parameters(), lr=self.lr,
+                                         momentum=self.config.momentum, weight_decay=self.config.wd)
 
         self.print_network(self.net, 'JL-DCF Structure')
 
@@ -68,7 +62,7 @@ class Solver(object):
                                            data_batch['depth']
             with torch.no_grad():
                 if self.config.cuda:
-                    device = torch.device('cuda:0')
+                    device = torch.device(self.config.device_id)
                     images = images.to(device)
                     depth = depth.to(device)
 
@@ -99,7 +93,7 @@ class Solver(object):
                     print('IMAGE ERROR, PASSING```')
                     continue
                 if self.config.cuda:
-                    device = torch.device('cuda:0')
+                    device = torch.device(self.config.device_id)
                     sal_image, sal_depth, sal_label = sal_image.to(device), sal_depth.to(device), sal_label.to(device)
 
                 sal_label_coarse = F.interpolate(sal_label, size_coarse, mode='bilinear', align_corners=True)
@@ -111,7 +105,7 @@ class Solver(object):
                 sal_loss_final = F.binary_cross_entropy_with_logits(sal_final, sal_label, reduction='sum')
 
                 sal_loss_fuse = sal_loss_final + 256 * sal_loss_coarse
-                sal_loss = sal_loss_fuse / (self.iter_size * self.config.batch_size)  # 积累多少样本
+                sal_loss = sal_loss_fuse / (self.iter_size * self.config.batch_size)
                 r_sal_loss += sal_loss.data
                 sal_loss.backward()
 
@@ -125,7 +119,7 @@ class Solver(object):
                 if (i + 1) % (self.show_every // self.config.batch_size) == 0:
                     print('epoch: [%2d/%2d], iter: [%5d/%5d]  ||  Sal : %10.4f' % (
                         epoch, self.config.epoch, i + 1, iter_num, r_sal_loss / (self.show_every / self.iter_size)))
-                    print('Learning rate: ' + str(self.lr))
+                    # print('Learning rate: ' + str(self.lr))
                     writer.add_scalar('training loss', r_sal_loss / (self.show_every / self.iter_size),
                                       epoch * len(self.train_loader.dataset) + i)
                     r_sal_loss = 0
@@ -135,3 +129,5 @@ class Solver(object):
 
         # save model
         torch.save(self.net.state_dict(), '%s/final.pth' % self.config.save_folder)
+
+
