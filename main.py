@@ -1,6 +1,6 @@
 import argparse
 import os
-from dataset import get_loader
+from dataset1 import get_loader
 from solver import Solver
 import time
 
@@ -51,16 +51,18 @@ def main(config):
 
 
 if __name__ == '__main__':
-    vgg_path = 'pretrained/vgg16_20M.pth'
     resnet_path = 'pretrained/resnet101-5d3b4d8f.pth'
 
     parser = argparse.ArgumentParser()
 
     # Hyper-parameters
     parser.add_argument('--n_color', type=int, default=3)
-    parser.add_argument('--lr', type=float, default=1e-9)  # Learning rate resnet:1e-9
+    parser.add_argument('--lr', type=float, default=1e-8)  # Learning rate resnet:1e-9
     parser.add_argument('--wd', type=float, default=0.0005)  # Weight decay
+    parser.add_argument('--momentum', type=float, default=0.99)
+    parser.add_argument('--image_size', type=int, default=320)
     parser.add_argument('--cuda', type=bool, default=True)
+    parser.add_argument('--device_id', type=str, default='cuda:0')
 
     # Training settings
     parser.add_argument('--arch', type=str, default='resnet')  # resnet or vgg
@@ -75,13 +77,13 @@ if __name__ == '__main__':
     parser.add_argument('--show_every', type=int, default=50)
 
     # Train data
-    parser.add_argument('--train_root', type=str, default='your training dataset path/RGBDcollection')
-    parser.add_argument('--train_list', type=str, default='your training dataset path/RGBDcollection/train.lst')
+    parser.add_argument('--train_root', type=str, default='D:/work/python/RGBDcollection')
+    parser.add_argument('--train_list', type=str, default='D:/work/python/RGBDcollection/train1.lst')
 
     # Testing settings
-    parser.add_argument('--model', type=str, default='checkpoints/epoch_xx.pth')  # Snapshot
-    parser.add_argument('--test_fold', type=str, default='your test results folder/')  # Test results saving folder
-    parser.add_argument('--sal_mode', type=str, default='LFSD',
+    parser.add_argument('--model', type=str, default='checkpoints/demo-28/epoch_39.pth')  # Snapshot
+    parser.add_argument('--test_fold', type=str, default='test/demo28/39/STERE/')  # Test results saving folder
+    parser.add_argument('--sal_mode', type=str, default='STERE',
                         choices=['NJU2K', 'NLPR', 'STERE', 'RGBD135', 'LFSD', 'SIP'])  # Test image dataset
 
     # Misc
