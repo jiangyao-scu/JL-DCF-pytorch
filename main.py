@@ -57,7 +57,7 @@ if __name__ == '__main__':
 
     # Hyper-parameters
     parser.add_argument('--n_color', type=int, default=3)
-    parser.add_argument('--lr', type=float, default=1e-9)  # Learning rate resnet:1e-9
+    parser.add_argument('--lr', type=float, default=0.00005)  # Learning rate resnet:5e-5
     parser.add_argument('--wd', type=float, default=0.0005)  # Weight decay
     parser.add_argument('--momentum', type=float, default=0.99)
     parser.add_argument('--image_size', type=int, default=320)
@@ -67,22 +67,22 @@ if __name__ == '__main__':
     # Training settings
     parser.add_argument('--arch', type=str, default='resnet')  # resnet or vgg
     parser.add_argument('--pretrained_model', type=str, default=resnet_path)  # pretrained backbone model
-    parser.add_argument('--epoch', type=int, default=40)
+    parser.add_argument('--epoch', type=int, default=45)
     parser.add_argument('--batch_size', type=int, default=1)  # only support 1 now
     parser.add_argument('--num_thread', type=int, default=1)
     parser.add_argument('--load', type=str, default='')  # pretrained JL-DCF model
     parser.add_argument('--save_folder', type=str, default='checkpoints/')
-    parser.add_argument('--epoch_save', type=int, default=1)
+    parser.add_argument('--epoch_save', type=int, default=5)
     parser.add_argument('--iter_size', type=int, default=10)
     parser.add_argument('--show_every', type=int, default=50)
 
     # Train data
     parser.add_argument('--train_root', type=str, default='D:/work/python/RGBDcollection')
-    parser.add_argument('--train_list', type=str, default='D:/work/python/RGBDcollection/train1.lst')
+    parser.add_argument('--train_list', type=str, default='D:/work/python/RGBDcollection/train.lst')
 
     # Testing settings
-    parser.add_argument('--model', type=str, default='checkpoints/demo-28/epoch_39.pth')  # Snapshot
-    parser.add_argument('--test_fold', type=str, default='test/demo28/39/STERE/')  # Test results saving folder
+    parser.add_argument('--model', type=str, default='checkpoints/demo-xx/epoch_xx.pth')  # Snapshot
+    parser.add_argument('--test_fold', type=str, default='test/demoxx/xx/STERE/')  # Test results saving folder
     parser.add_argument('--sal_mode', type=str, default='STERE',
                         choices=['NJU2K', 'NLPR', 'STERE', 'RGBD135', 'LFSD', 'SIP'])  # Test image dataset
 
