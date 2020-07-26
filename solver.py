@@ -49,8 +49,7 @@ class Solver(object):
         self.lr = self.config.lr
         self.wd = self.config.wd
 
-        self.optimizer = torch.optim.SGD(self.net.parameters(), lr=self.lr,
-                                         momentum=self.config.momentum, weight_decay=self.config.wd)
+        self.optimizer = torch.optim.Adam(self.net.parameters(), lr=self.lr, weight_decay=self.wd)
 
         self.print_network(self.net, 'JL-DCF Structure')
 
