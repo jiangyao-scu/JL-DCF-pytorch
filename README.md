@@ -76,7 +76,7 @@ Below is the performance of JL-DCF-pyotrch (Pytorch implementation).
 |          | F       | 0.889   |
 |          | E       | 0.925   |
 |          | M       | 0.050   |  
-
+<br>
 Generally, the performance of Pytorch implementation is comparable to, and even slightly better than the previous Caffe implementation reported in the paper. This is probably due to the differences between deep learning platforms. Also, due to the randomness in the training process, the obtained results will fluctuate slightly.
 # Citation
 Please cite our paper if you find the work useful:<br>
