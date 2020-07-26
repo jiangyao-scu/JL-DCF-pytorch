@@ -34,7 +34,7 @@ The training logs saves in the 'log' folder. If you want to see the learning cur
 [vgg_conv1](https://pan.baidu.com/s/1CJyNALzPIAiHrDSMcRO2yA), password: rllb<br>
 
 # Trained model for testing
-[JL-DCF-pytorch](https://pan.baidu.com/s/1ws2zC_g47xGjlHQbVdp-xw), password: pii9<br>
+[JL-DCF-pytorch](https://pan.baidu.com/s/1KoxUvnnM5zJoFPEkrv7b1Q), password: jdpb<br>
 
 # Pre-computed saliency maps
 [pre-computed saliency maps come from author](https://pan.baidu.com/s/1gaIucFyCWlE4f1qhPKzzTw), password:  5hl9<br>
