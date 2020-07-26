@@ -46,12 +46,32 @@ The training logs saves in the 'log' folder. If you want to see the learning cur
 
 # Performance
 This is the performance of JL-DCF(pyotrch implementation).
-|      |  NJU2K | NLPR  | STERE | RGBD135 | LFSD  | SIP   |
-| ---- | ------ | ----- | ----- | ------- | ----- | ----- |
-| S    | 0.910  | 0.929 | 0.899 | 0.930   | 0.863 | 0.887 |
-| F    | 0.911  | 0.916 | 0.894 | 0.918   | 0.868 | 0.894 |
-| E    | 0.946  | 0.962 | 0.940 | 0.962   | 0.902 | 0.932 |
-| M    | 0.043  | 0.024 | 0.048 | 0.022   | 0.079 | 0.050 |
+| datasets | metrics | pytorch |
+| -------- | ------- | ------- |
+| NJU2K    | S       | 0.917   |
+|          | F       | 0.919   |
+|          | E       | 0.950   |
+|          | M       | 0.037   |
+| NLPR     | S       | 0.931   |
+|          | F       | 0.920   |
+|          | E       | 0.964   |
+|          | M       | 0.022   |
+| STERE    | S       | 0.906   |
+|          | F       | 0.903   |
+|          | E       | 0.946   |
+|          | M       | 0.040   |
+| RGBD135  | S       | 0.934   |
+|          | F       | 0.928   |
+|          | E       | 0.967   |
+|          | M       | 0.020   |
+| LFSD     | S       | 0.862   |
+|          | F       | 0.861   |
+|          | E       | 0.894   |
+|          | M       | 0.074   |
+| SIP      | S       | 0.879   |
+|          | F       | 0.889   |
+|          | E       | 0.925   |
+|          | M       | 0.050   |
 
 # Citation
 Please cite our paper if you find the work useful:<br>
