@@ -9,20 +9,20 @@ Code for JL-DCF: Joint Learning and Densely-Cooperative Fusion Framework for RGB
 * Cuda 10.0
 
 # Usage
-This is the Pytorch implementation of JL-DCF. It has been trained and tested it on Windows (Win10 + Cuda 10 + Python 3.6 + Pytorch 1.5),
+This is the Pytorch implementation of JL-DCF. It has been trained and tested on Windows (Win10 + Cuda 10 + Python 3.6 + Pytorch 1.5),
 and it should also work on Linux but we didn't try. 
 
 ## To Train 
-* Download the pre-trained ImageNet backbone (ResNet-101 and VGG_CONV1. The latter already exists in the folder) and put in it the 'pretrained' file folder
+* Download the pre-trained ImageNet backbone (resnet101 and vgg_conv1, whereas the latter already exists in the folder), and put in it the 'pretrained' folder
 * Download the training dataset and modify the 'train_root' and 'train_list' in the `main.py`
 * Set 'mode' to 'train'
 * Run `main.py`
 
 ## To Test 
 * Download the testing dataset and have it in the 'dataset/test/' folder 
-* Downloading the already-trained JL-DCF model and modify the 'model' to its saving path in the `main.py`
-* Modify the 'test_folder' in the main.py to your testing results saving folder
-* Modify the 'sal_mode' to select testing dataset (NJU2K, NLPR, STERE, RGBD135, LFSD, and SIP)
+* Download the already-trained JL-DCF pytorch model and modify the 'model' to its saving path in the `main.py`
+* Modify the 'test_folder' in the main.py to the testing results saving folder you want
+* Modify the 'sal_mode' to select one testing dataset (NJU2K, NLPR, STERE, RGBD135, LFSD, and SIP)
 * Set 'mode' to 'test'
 * Run `main.py`
 
@@ -49,8 +49,8 @@ Google Drive:<br>
 Coming soon<br>
 
 # Performance
-This is the performance of JL-DCF-pyotrch(Pytorch implementation).
-| datasets | metrics | pytorch |
+Below is the performance of JL-DCF-pyotrch (Pytorch implementation).
+| Datasets | Metrics | Pytorch |
 | -------- | ------- | ------- |
 | NJU2K    | S       | 0.917   |
 |          | F       | 0.919   |
