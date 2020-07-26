@@ -1,9 +1,6 @@
 import torch
 from torch import nn
 import torch.nn.functional as F
-# import math
-# from torch.autograd import Variable
-# import numpy as np
 
 from .resnet import ResNet, Bottleneck
 
