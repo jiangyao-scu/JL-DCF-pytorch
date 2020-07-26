@@ -9,8 +9,8 @@ Code of JL-DCF: Joint Learning and Densely-Cooperative Fusion Framework for RGB-
 * cuda 10.0
 
 # Usage
-This is the pytorch implementation of JL-DCF. We have trained and tested it on windows (win10 + cuda 10 + python 3.6 
-+ pytorch 1.5), it should also work on Linux but we didn't try. 
+This is the pytorch implementation of JL-DCF. We have trained and tested it on windows (win10 + cuda 10 + python 3.6 + pytorch 1.5),
+it should also work on Linux but we didn't try. 
 
 ## Train 
 * Downloading the pre-trained backbone(resnet101,vgg_conv1) and put in it the 'pretrained' file folder
