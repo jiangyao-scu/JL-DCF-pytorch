@@ -1,51 +1,55 @@
 # JL-DCF-pytorch
 
-Code of JL-DCF: Joint Learning and Densely-Cooperative Fusion Framework for RGB-D Salient Object Detection(CVPR2020)  [PDF](https://arxiv.org/pdf/2004.08515v1)
+Code for JL-DCF: Joint Learning and Densely-Cooperative Fusion Framework for RGB-D Salient Object Detection (CVPR2020) [PDF](https://arxiv.org/pdf/2004.08515v1)
 
 # Requirements
-* python 3.6 <br>
-* pytorch 1.5.0 <br>
-* torchvision 0.6.1 <br>
-* cuda 10.0
+* Python 3.6 <br>
+* Pytorch 1.5.0 <br>
+* Torchvision 0.6.1 <br>
+* Cuda 10.0
 
 # Usage
-This is the pytorch implementation of JL-DCF. We have trained and tested it on windows (win10 + cuda 10 + python 3.6 + pytorch 1.5),
-it should also work on Linux but we didn't try. 
+This is the Pytorch implementation of JL-DCF. It has been trained and tested it on Windows (Win10 + Cuda 10 + Python 3.6 + Pytorch 1.5),
+and it should also work on Linux but we didn't try. 
 
-## Train 
-* Downloading the pre-trained backbone(resnet101,vgg_conv1) and put in it the 'pretrained' file folder
-* downloading the train set and modify the 'train_root' and 'train_list' in the `main.py`
-* set 'mode' to 'train'
-* run `main.py`
+## To Train 
+* Download the pre-trained ImageNet backbone (ResNet-101 and VGG_CONV1. The latter already exists in the folder) and put in it the 'pretrained' file folder
+* Download the training dataset and modify the 'train_root' and 'train_list' in the `main.py`
+* Set 'mode' to 'train'
+* Run `main.py`
 
-## Test 
-* Downloading the testing dataset and put it in the 'dataset/test/' folder 
-* Downloading the trained JL-DCF model and modify the 'model' to it saveing path in the `main.py`
-* Modify the 'test_folder' in the main.py to your testing results save folder
-* Modify the 'sal_mode' to select testing dataset(NJU2K, NLPR, STERE, RGBD135, LFSD, and SIP)
-* set 'mode' to 'test'
-* run `main.py`
+## To Test 
+* Download the testing dataset and have it in the 'dataset/test/' folder 
+* Downloading the already-trained JL-DCF model and modify the 'model' to its saving path in the `main.py`
+* Modify the 'test_folder' in the main.py to your testing results saving folder
+* Modify the 'sal_mode' to select testing dataset (NJU2K, NLPR, STERE, RGBD135, LFSD, and SIP)
+* Set 'mode' to 'test'
+* Run `main.py`
 
 ## Learning curve
-The training logs saves in the 'log' folder. If you want to see the learning curve, you can get it by using: ` tensorboard --logdir your-log-path`
+The training log is saved in the 'log' folder. If you want to see the learning curve, you can get it by using: ` tensorboard --logdir your-log-path`
 
-# Pre-trained model for training
+# Pre-trained ImageNet model for training
 [resnet101](https://download.pytorch.org/models/resnet101-5d3b4d8f.pth)<br>
 [vgg_conv1](https://pan.baidu.com/s/1CJyNALzPIAiHrDSMcRO2yA), password: rllb<br>
 
 # Trained model for testing
-[JL-DCF-pytorch](https://pan.baidu.com/s/1KoxUvnnM5zJoFPEkrv7b1Q), password: jdpb<br>
+Baidu Pan: [JL-DCF-pytorch](https://pan.baidu.com/s/1KoxUvnnM5zJoFPEkrv7b1Q), password: jdpb<br>
+Google Drive: Coming soon<br>
 
-# Pre-computed saliency maps
-[pre-computed saliency maps come from author](https://pan.baidu.com/s/1gaIucFyCWlE4f1qhPKzzTw), password:  5hl9<br>
-[pre-computed saliency maps come from pytorch implementation of JL-DCF](https://pan.baidu.com/s/1dhuL2108DxLdAj4J59gAaw), password:  gtkc<br>
+# JL-DCF-pytorch saliency maps
+Baidu Pan: [Saliency maps](https://pan.baidu.com/s/1dhuL2108DxLdAj4J59gAaw), password:  gtkc<br>
+Google Drive: Coming soon<br>
 
 # Dataset
-* [training dataset with flip horizontally](https://pan.baidu.com/s/1vrVcRFTMRO5v-A6Q2Y3-Nw), password:  i4mi<br>
-* [testing datadet](https://pan.baidu.com/s/13P-f3WbA76NVtRePcFbVFw), password:   1ju8<br>
+Baidu Pan:<br>
+[Training dataset (with horizontal flip)](https://pan.baidu.com/s/1vrVcRFTMRO5v-A6Q2Y3-Nw), password:  i4mi<br>
+[Testing datadet](https://pan.baidu.com/s/13P-f3WbA76NVtRePcFbVFw), password:   1ju8<br>
+Google Drive:<br>
+Coming soon<br>
 
 # Performance
-This is the performance of JL-DCF(pyotrch implementation).
+This is the performance of JL-DCF-pyotrch(Pytorch implementation).
 | datasets | metrics | pytorch |
 | -------- | ------- | ------- |
 | NJU2K    | S       | 0.917   |
