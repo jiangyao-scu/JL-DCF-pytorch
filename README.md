@@ -38,7 +38,7 @@ The training logs saves in the 'log' folder. If you want to see the learning cur
 
 # Pre-computed saliency maps
 [pre-computed saliency maps come from author](https://pan.baidu.com/s/1gaIucFyCWlE4f1qhPKzzTw), password:  5hl9<br>
-[pre-computed saliency maps come from pytorch implementation of JL-DCF](https://pan.baidu.com/s/1FmubauYT2N6BH2NWGxzpTQ), password:  b71v<br>
+[pre-computed saliency maps come from pytorch implementation of JL-DCF](https://pan.baidu.com/s/1dhuL2108DxLdAj4J59gAaw), password:  gtkc<br>
 
 # Dataset
 * [training dataset with flip horizontally](https://pan.baidu.com/s/1vrVcRFTMRO5v-A6Q2Y3-Nw), password:  i4mi<br>
