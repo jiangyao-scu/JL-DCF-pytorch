@@ -39,7 +39,7 @@ Google Drive: Coming soon<br>
 
 # JL-DCF-pytorch saliency maps
 Baidu Pan: [Saliency maps](https://pan.baidu.com/s/1IzAjbbhoAdhsg-2B_gSwqw), password: 4nqr<br>
-Google Drive: Coming soon<br>
+Google Drive: https://drive.google.com/open?id=1mHMN36aI5zNt50DQBivSDyYvCQ9eeGhP<br>
 
 # Dataset
 Baidu Pan:<br>
