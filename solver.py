@@ -72,7 +72,7 @@ class Solver(object):
 
                 pred = (pred - pred.min()) / (pred.max() - pred.min() + 1e-8)
                 multi_fuse = 255 * pred
-                filename = os.path.join(self.config.test_fold, name[:-4] + '_GT.png')
+                filename = os.path.join(self.config.test_fold, name[:-4] + '_JLDCF.png')
                 cv2.imwrite(filename, multi_fuse)
         time_e = time.time()
         print('Speed: %f FPS' % (img_num / (time_e - time_s)))
