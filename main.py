@@ -43,7 +43,7 @@ def main(config):
     elif config.mode == 'test':
         get_test_info(config)
         test_loader = get_loader(config, mode='test')
-        if not os.path.exists(config.test_fold): os.makedirs(config.test_fold)
+        if not os.path.exists(config.test_folder): os.makedirs(config.test_folder)
         test = Solver(None, test_loader, config)
         test.test()
     else:
@@ -82,7 +82,7 @@ if __name__ == '__main__':
 
     # Testing settings
     parser.add_argument('--model', type=str, default='checkpoints/demo-xx/epoch_xx.pth')  # Snapshot
-    parser.add_argument('--test_fold', type=str, default='test/demoxx/xx/STERE/')  # Test results saving folder
+    parser.add_argument('--test_folder', type=str, default='test/demoxx/xx/STERE/')  # Test results saving folder
     parser.add_argument('--sal_mode', type=str, default='STERE',
                         choices=['NJU2K', 'NLPR', 'STERE', 'RGBD135', 'LFSD', 'SIP'])  # Test image dataset
 
