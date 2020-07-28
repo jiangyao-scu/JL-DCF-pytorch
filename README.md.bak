@@ -39,7 +39,7 @@ Google Drive: Coming soon<br>
 
 # JL-DCF-pytorch saliency maps
 Baidu Pan: [Saliency maps](https://pan.baidu.com/s/1IzAjbbhoAdhsg-2B_gSwqw), password: 4nqr<br>
-Google Drive: Coming soon<br>
+Google Drive: https://drive.google.com/open?id=1mHMN36aI5zNt50DQBivSDyYvCQ9eeGhP<br>
 
 # Dataset
 Baidu Pan:<br>
@@ -49,7 +49,7 @@ Google Drive:<br>
 Coming soon<br>
 
 # Performance
-Below is the performance of JL-DCF-pyotrch (Pytorch implementation). Generally, the performance of Pytorch implementation is comparable to, and even slightly better than the previous Caffe implementation reported in the paper. This is probably due to the differences between deep learning platforms. Also, due to the randomness in the training process, the obtained results will fluctuate slightly.
+Below is the performance of JL-DCF-pyotrch (Pytorch implementation). Generally, the performance of Pytorch implementation is comparable to, and even slightly better than the previous [Caffe implementation](https://github.com/kerenfu/JLDCF/) reported in the paper. This is probably due to the differences between deep learning platforms. Also, due to the randomness in the training process, the obtained results will fluctuate slightly.
 
 | Datasets | Metrics | Pytorch |
 | -------- | ------- | ------- |
@@ -85,5 +85,10 @@ Please cite our paper if you find the work useful:<br>
         author = {Keren Fu, Deng-Ping Fan, Ge-Peng Ji, Qijun Zhao},
         title = {JL-DCF: Joint Learning and Densely-Cooperative Fusion Framework for RGB-D Salient Object Detection},
         booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+        pages={3052--3062},
         year = {2020}
         }
+
+# Benchmark RGB-D SOD
+The complete RGB-D SOD benchmark can be found in this page  
+http://dpfan.net/d3netbenchmark/
