@@ -35,7 +35,7 @@ The training log is saved in the 'log' folder. If you want to see the learning c
 
 # Trained model for testing
 Baidu Pan: [JL-DCF-pytorch](https://pan.baidu.com/s/1KoxUvnnM5zJoFPEkrv7b1Q), password: jdpb<br>
-Google Drive: Coming soon<br>
+Google Drive: https://drive.google.com/open?id=12u37yz-031unDPJoKaZ0goK8BtPP-6Cj<br>
 
 # JL-DCF-pytorch saliency maps
 Baidu Pan: [Saliency maps](https://pan.baidu.com/s/1IzAjbbhoAdhsg-2B_gSwqw), password: 4nqr<br>
