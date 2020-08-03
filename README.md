@@ -54,30 +54,30 @@ Below is the performance of JL-DCF-pyotrch (Pytorch implementation). Generally, 
 
 | Datasets | Metrics | Pytorch |
 | -------- | ------- | ------- |
-| NJU2K    | S-measure| 0.917   |
-|          | F       | 0.919   |
-|          | E       | 0.950   |
-|          | M       | 0.037   |
-| NLPR     | S       | 0.931   |
-|          | F       | 0.920   |
-|          | E       | 0.964   |
-|          | M       | 0.022   |
-| STERE    | S       | 0.906   |
-|          | F       | 0.903   |
-|          | E       | 0.946   |
-|          | M       | 0.040   |
-| RGBD135  | S       | 0.934   |
-|          | F       | 0.928   |
-|          | E       | 0.967   |
-|          | M       | 0.020   |
-| LFSD     | S       | 0.862   |
-|          | F       | 0.861   |
-|          | E       | 0.894   |
-|          | M       | 0.074   |
-| SIP      | S       | 0.879   |
-|          | F       | 0.889   |
-|          | E       | 0.925   |
-|          | M       | 0.050   |  
+| NJU2K    |S-measure| 0.917   |
+|          | maxF    | 0.919   |
+|          | maxE    | 0.950   |
+|          | MAE     | 0.037   |
+| NLPR     |S-measure| 0.931   |
+|          | maxF    | 0.920   |
+|          | maxE    | 0.964   |
+|          | MAE     | 0.022   |
+| STERE    |S-measure| 0.906   |
+|          | maxF    | 0.903   |
+|          | maxE    | 0.946   |
+|          | MAE     | 0.040   |
+| RGBD135  |S-measure| 0.934   |
+|          | maxF    | 0.928   |
+|          | maxE    | 0.967   |
+|          | MAE     | 0.020   |
+| LFSD     |S-measure| 0.862   |
+|          | maxF    | 0.861   |
+|          | maxE    | 0.894   |
+|          | MAE     | 0.074   |
+| SIP      |S-measure| 0.879   |
+|          | maxF    | 0.889   |
+|          | maxE    | 0.925   |
+|          | MAE     | 0.050   |  
 
 # Citation
 Please cite our paper if you find the work useful:<br>
