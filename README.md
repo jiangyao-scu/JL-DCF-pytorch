@@ -54,7 +54,7 @@ Below is the performance of JL-DCF-pyotrch (Pytorch implementation). Generally, 
 
 | Datasets | Metrics | Pytorch |
 | -------- | ------- | ------- |
-| NJU2K    | S       | 0.917   |
+| NJU2K    | S-measure| 0.917   |
 |          | F       | 0.919   |
 |          | E       | 0.950   |
 |          | M       | 0.037   |
