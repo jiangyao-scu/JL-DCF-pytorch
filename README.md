@@ -13,7 +13,7 @@ This is the Pytorch implementation of JL-DCF. It has been trained and tested on 
 and it should also work on Linux but we didn't try. 
 
 ## To Train 
-* Download the pre-trained ImageNet backbone (resnet101 and vgg_conv1, whereas the latter already exists in the folder), and put in it the 'pretrained' folder
+* Download the pre-trained ImageNet backbone (resnet101 and vgg_conv1, whereas the latter already exists in the folder), and put it in the 'pretrained' folder
 * Download the training dataset and modify the 'train_root' and 'train_list' in the `main.py`
 * Set 'mode' to 'train'
 * Run `main.py`
