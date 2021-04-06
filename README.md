@@ -80,16 +80,16 @@ Below is the performance of JL-DCF-pyotrch (Pytorch implementation). Generally, 
 |          | MAE     | 0.050   |  
 
 # Citation
-Please cite our paper if you find the work useful:<br>
+Please cite our paper if you find the work useful: 
 
-        @InProceedings{Fu_2020_CVPR,
-        author = {Keren Fu, Deng-Ping Fan, Ge-Peng Ji, Qijun Zhao},
-        title = {JL-DCF: Joint Learning and Densely-Cooperative Fusion Framework for RGB-D Salient Object Detection},
-        booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
-        pages={3052--3062},
-        year = {2020}
-        }
-
+	@inproceedings{Fu2020JLDCF,
+  	title={JL-DCF: Joint Learning and Densely-Cooperative Fusion Framework for RGB-D Salient Object Detection},
+  	author={Fu, Keren and Fan, Deng-Ping and Ji, Ge-Peng and Zhao, Qijun},
+  	booktitle={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  	pages={3052--3062},
+  	year={2020}
+	}
+        
 	@article{Fu2021siamese,
   	title={Siamese Network for RGB-D Salient Object Detection and Beyond},
   	author={Fu, Keren and Fan, Deng-Ping and Ji, Ge-Peng and Zhao, Qijun and Shen, Jianbing},
