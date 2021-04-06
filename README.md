@@ -90,6 +90,12 @@ Please cite our paper if you find the work useful:<br>
         year = {2020}
         }
 
+	@article{Fu2021siamese,
+  	title={Siamese Network for RGB-D Salient Object Detection and Beyond},
+  	author={Fu, Keren and Fan, Deng-Ping and Ji, Ge-Peng and Zhao, Qijun and Shen, Jianbing},
+  	journal={IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)},
+  	year={2021}
+	}
 # Benchmark RGB-D SOD
 The complete RGB-D SOD benchmark can be found in this page  
 http://dpfan.net/d3netbenchmark/
