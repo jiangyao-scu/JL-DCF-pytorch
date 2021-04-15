@@ -24,6 +24,9 @@ def get_test_info(config):
     elif config.sal_mode == 'SIP':
         image_root = 'dataset/test/SIP/'
         image_source = 'dataset/test/SIP/test.lst'
+    elif config.sal_mode == 'ReDWeb-S':
+        image_root = 'dataset/test/ReDWeb-S/'
+        image_source = 'dataset/test/ReDWeb-S/test.lst'
     else:
         raise Exception('Invalid config.sal_mode')
 
@@ -51,7 +54,12 @@ def main(config):
 
 
 if __name__ == '__main__':
-    resnet_path = 'pretrained/resnet101-5d3b4d8f.pth'
+    resnet101_path = 'pretrained/resnet101-5d3b4d8f.pth'
+    resnet50_path = 'pretrained/resnet50-19c8e357.pth'
+    vgg16_path = 'pretrained/vgg16-397923af.pth'
+    densenet161_path = 'pretrained/densenet161-8d451a50.pth'
+    pretrained_path = {'resnet101': resnet101_path, 'resnet50': resnet50_path, 'vgg16': vgg16_path,
+                       'densenet161': densenet161_path}
 
     parser = argparse.ArgumentParser()
 
@@ -65,8 +73,9 @@ if __name__ == '__main__':
     parser.add_argument('--device_id', type=str, default='cuda:0')
 
     # Training settings
-    parser.add_argument('--arch', type=str, default='resnet')  # resnet or vgg
-    parser.add_argument('--pretrained_model', type=str, default=resnet_path)  # pretrained backbone model
+    parser.add_argument('--arch', type=str, default='vgg'
+                        , choices=['resnet', 'vgg','densenet'])  # resnet, vgg or densenet
+    parser.add_argument('--pretrained_model', type=str, default=pretrained_path)  # pretrained backbone model
     parser.add_argument('--epoch', type=int, default=45)
     parser.add_argument('--batch_size', type=int, default=1)  # only support 1 now
     parser.add_argument('--num_thread', type=int, default=1)
@@ -75,16 +84,18 @@ if __name__ == '__main__':
     parser.add_argument('--epoch_save', type=int, default=5)
     parser.add_argument('--iter_size', type=int, default=10)
     parser.add_argument('--show_every', type=int, default=50)
+    parser.add_argument('--network', type=str, default='vgg16'
+                        , choices=['resnet50', 'resnet101', 'vgg16', 'densenet161'])  # Network Architecture
 
     # Train data
-    parser.add_argument('--train_root', type=str, default='D:/work/python/RGBDcollection')
-    parser.add_argument('--train_list', type=str, default='D:/work/python/RGBDcollection/train.lst')
+    parser.add_argument('--train_root', type=str, default='/dataset/RGBDcollection')
+    parser.add_argument('--train_list', type=str, default='/dataset/RGBDcollection/train.lst')
 
     # Testing settings
-    parser.add_argument('--model', type=str, default='checkpoints/demo-xx/epoch_xx.pth')  # Snapshot
-    parser.add_argument('--test_folder', type=str, default='test/demoxx/xx/STERE/')  # Test results saving folder
-    parser.add_argument('--sal_mode', type=str, default='STERE',
-                        choices=['NJU2K', 'NLPR', 'STERE', 'RGBD135', 'LFSD', 'SIP'])  # Test image dataset
+    parser.add_argument('--model', type=str, default='checkpoints/vgg16.pth')  # Snapshot
+    parser.add_argument('--test_folder', type=str, default='test/vgg16/LFSD/')  # Test results saving folder
+    parser.add_argument('--sal_mode', type=str, default='LFSD',
+                        choices=['NJU2K', 'NLPR', 'STERE', 'RGBD135', 'LFSD', 'SIP', 'ReDWeb-S'])  # Test image dataset
 
     # Misc
     parser.add_argument('--mode', type=str, default='train', choices=['train', 'test'])
