@@ -26,7 +26,10 @@ class Solver(object):
             self.net.load_state_dict(torch.load(self.config.model))
         if config.mode == 'train':
             if self.config.load == '':
-                self.net.JLModule.load_pretrained_model(self.config.pretrained_model)  # load pretrained backbone
+                self.net.JLModule.load_pretrained_model(self.config.pretrained_model
+                                                        if isinstance(self.config.pretrained_model, str)
+                                                        else self.config.pretrained_model[self.config.network])
+                # load pretrained backbone
             else:
                 self.net.load_state_dict(torch.load(self.config.load))  # load pretrained model
 
@@ -41,7 +44,7 @@ class Solver(object):
 
     # build the network
     def build_model(self):
-        self.net = build_model(self.config.arch)
+        self.net = build_model(self.config.network, self.config.arch)
 
         if self.config.cuda:
             self.net = self.net.cuda()
@@ -54,6 +57,7 @@ class Solver(object):
         self.print_network(self.net, 'JL-DCF Structure')
 
     def test(self):
+        print('Testing...')
         time_s = time.time()
         img_num = len(self.test_loader)
         for i, data_batch in enumerate(self.test_loader):
@@ -128,5 +132,3 @@ class Solver(object):
 
         # save model
         torch.save(self.net.state_dict(), '%s/final.pth' % self.config.save_folder)
-
-
