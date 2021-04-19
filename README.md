@@ -78,7 +78,7 @@ Baidu Pan: [vgg16](https://pan.baidu.com/s/1F_w1HRA50_OQwaGYWcZBdw), password: c
 
 **Densenet161 (NJU2K, NLPR, STERE, RGBD135, LFSD, SIP, DUT-RGBD):**
 
-Baidu Pan: [densenet161](https://pan.baidu.com/s/14LRrFSJr8aJx_ckAwSLbOg), password: 2fmd
+Baidu Pan: [densenet161](https://pan.baidu.com/s/1onL9eYXxcROXwvPlYeIKCA), password: ovuc
 
 # Dataset
 Baidu Pan:<br>
