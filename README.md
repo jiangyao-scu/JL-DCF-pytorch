@@ -80,6 +80,13 @@ Baidu Pan: [vgg16](https://pan.baidu.com/s/1F_w1HRA50_OQwaGYWcZBdw), password: c
 
 Baidu Pan: [densenet161](https://pan.baidu.com/s/1onL9eYXxcROXwvPlYeIKCA), password: ovuc
 
+## Important Tips!
+Note that our JL-DCF model was trained on depth maps which satisfy the rule that closer objects present lower depth values (are "black"), 
+while further objects have higher depth values (are "white"). Although these depth maps are normalized into the range [0, 1], such a rule is enforced 
+to meet physical common sense. We observed that the model performance would somewhat degrade when using reversed maps during testing. <strong>So be aware of this issue when testing the models.</strong>
+Anyway, the training and testing settings should always be kept consistent.
+![alt text](./figures/Depth.png)
+
 # Dataset
 Baidu Pan:<br>
 [Training dataset (with horizontal flip)](https://pan.baidu.com/s/1vrVcRFTMRO5v-A6Q2Y3-Nw), password:  i4mi<br>
