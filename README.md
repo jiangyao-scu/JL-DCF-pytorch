@@ -22,7 +22,7 @@ and it should also work on Linux but we didn't try.
 python main.py --mode=train --arch=resnet --network=resnet101 --train_root=xx/dataset/RGBDcollection --train_list=xx/dataset/RGBDcollection/train.lst 
 ```
 
-
+**The converged loss value is around 7000**
 
 ## To Test 
 * Download the [testing dataset](#dataset) and have it in the 'dataset/test/' folder. 
