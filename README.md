@@ -1,6 +1,6 @@
 # JL-DCF-pytorch
 
-Pytorch implementation for JL-DCF: Joint Learning and Densely-Cooperative Fusion Framework for RGB-D Salient Object Detection (CVPR2020) [[PDF](https://openaccess.thecvf.com/content_CVPR_2020/papers/Fu_JL-DCF_Joint_Learning_and_Densely-Cooperative_Fusion_Framework_for_RGB-D_Salient_CVPR_2020_paper.pdf)][[中文版](http://dpfan.net/wp-content/uploads/cvpr2020JLDCF_CameraReady_Chinese_final.pdf)], Siamese Network for RGB-D Salient Object Detection and Beyond (TPAMI2021) [[PDF](https://arxiv.org/pdf/2008.12134.pdf)]
+Pytorch implementation for JL-DCF: Joint Learning and Densely-Cooperative Fusion Framework for RGB-D Salient Object Detection (CVPR2020) [[PDF](https://openaccess.thecvf.com/content_CVPR_2020/papers/Fu_JL-DCF_Joint_Learning_and_Densely-Cooperative_Fusion_Framework_for_RGB-D_Salient_CVPR_2020_paper.pdf)][[中文版](http://dpfan.net/wp-content/uploads/cvpr2020JLDCF_CameraReady_Chinese_final.pdf)], Siamese Network for RGB-D Salient Object Detection and Beyond (TPAMI2021) [[PDF](https://arxiv.org/pdf/2008.12134.pdf)][[中文版](http://www.kerenfu.top/sources/2021tpamijldcf-cn.pdf)]  
 
 # Requirements
 * Python 3.6 <br>
