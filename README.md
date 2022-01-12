@@ -68,6 +68,10 @@ Baidu Pan: [densenet161](https://pan.baidu.com/s/1yOHzC7KwQIVN2ySqmrcxAQ), passw
 Baidu Pan: [resnet101](https://pan.baidu.com/s/1LRJDJLYl8RD0TsHksRJ2kg), password: v144<br>
 Google Drive: https://drive.google.com/file/d/1GoqDlLrN_INNldsbOEAxyyu1QB_urHr0/view?usp=sharing<br>
 
+**Resnet101 (SSD):**
+
+Baidu Pan: [resnet101](https://pan.baidu.com/s/1oUlCD8mwttSOBgOlYWdKOg), password: wmon
+
 **Resnet50 (NJU2K, NLPR, STERE, RGBD135, LFSD, SIP, DUT-RGBD):**
 
 Baidu Pan: [resnet50](https://pan.baidu.com/s/1iB77wSXU6FYSRZiR-4ysVg), password: zen9
